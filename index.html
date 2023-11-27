@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Text Example</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="100"></canvas>
+    <br>
+    <button onclick="downloadImage()">Download Image</button>
+
+    <script>
+        // Get the canvas element
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        // Set the font style
+        ctx.font = "30px Roboto, sans-serif";
+        ctx.fillStyle = "white";
+
+        // Add text to the canvas
+        ctx.fillText("Hello, Canvas!", 10, 50);
+
+        function downloadImage() {
+            // Get the data URL of the canvas
+            var dataURL = canvas.toDataURL("image/png");
+
+            // Create a download link
+            var link = document.createElement('a');
+            link.href = dataURL;
+            link.download = 'canvas_image.png';
+            
+            // Append the link to the document and trigger the click event
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
